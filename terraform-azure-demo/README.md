@@ -125,6 +125,7 @@ az account set --subscription $DEFAULT_SUBSCRIPTION_ID
 ```
 
 ### 3. Create the service principal. You can use any name you prefer; in this example, we’ll name it `tf-sp`
+**Note:** This step is only needed once, unless you need to update .env with new values (see step 4 for security considerations).
 ```bash
 az ad sp create-for-rbac --name tf-sp --role Contributor --scopes /subscriptions/$DEFAULT_SUBSCRIPTION_ID
 ```
