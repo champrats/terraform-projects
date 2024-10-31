@@ -4,6 +4,9 @@ Tags: #devops #dataengineering
 
 Related to: [[DevOps]]
 ________________________________
+--------------------------------
+
+<br> <!-- Break between lines -->
 
 # About
 This project contains a deployment of the following Azure resources using Terraform:
@@ -13,6 +16,8 @@ This project contains a deployment of the following Azure resources using Terraf
 - **Resource Group (`terraform-rg`)**: A container that holds related resources (e.g., Azure Data Factory, Web Apps, Databricks, VMs) for an Azure solution.
     
 - **Storage Account (`labaigoadlsauc1`)**: A unique namespace for your data storage that is accessible from anywhere, such as Azure Databricks.
+
+<br> <!-- Break between lines -->
 
 # Pre-requisites
 1. **WSL Ubuntu** (Windows Subsystem for Linux) installed on your system.
@@ -36,6 +41,8 @@ After you have installed all the prerequisites, create your project repository. 
 
 For example, you might create a folder structure like this: 
 `C:\deta-enjinia\terraform-projects
+
+<br> <!-- Break between lines -->
 
 # Simplified Steps
 In this section, you’ll find simplified steps to guide you from logging into Azure to creating a service principal and Azure storage account.
