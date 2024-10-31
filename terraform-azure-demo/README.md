@@ -11,7 +11,7 @@ ___
 # About
 This project was inspired by curiosity and the recognition that, as a data engineer, it’s increasingly important to have foundational knowledge of DevOps practices like Terraform, often referred to as “Infrastructure as Code” (IaC). This approach is essential for modern, automated infrastructure management.
 
-Special thanks to Pedro ([Pytalista](https://youtu.be/8A0uZ0BoJ9k?si=1Bsm0MekZWnMOKh_)) for his insightful YouTube tutorial, which served as a valuable guide for developing this project.
+Special thanks to Pedro Junqueira ([Pytalista](https://youtu.be/8A0uZ0BoJ9k?si=1Bsm0MekZWnMOKh_)) for his insightful YouTube tutorial, which served as a valuable guide and inspiration for developing this project.
 
 This project contains a deployment of the following Azure resources using Terraform:
 
@@ -20,6 +20,41 @@ This project contains a deployment of the following Azure resources using Terraf
 - **Resource Group (`terraform-rg`)**: A container that holds related resources (e.g., Azure Data Factory, Web Apps, Databricks, VMs) for an Azure solution.
     
 - **Storage Account (`labaigoadlsauc1`)**: A unique namespace for your data storage that is accessible from anywhere, such as Azure Databricks.
+
+<br> <!-- Break between lines -->
+
+# Diagrams
+## High-level
+![alt text](images/tf-az-diagram-flow1.png)
+
+## Terraform Level
+![alt text](images/terraform-level-diagram-1.png)
+- `.env`: Used to store environment-specific configuration details for your Azure service principal:
+```text
+ARM_SUBSCRIPTION_ID=<subscription id>
+ARM_CLIENT_ID=<appId value>
+ARM_CLIENT_SECRET=<password value>
+ARM_TENANT_ID=<tenant value>
+ARM_SERVICE_PRINCIPAL_NAME=tf-sp
+
+# It provides a convenient way to manage environment variables, especially for sensitive information like Azure service principal credentials.
+
+# Before running Terraform commands, ensure these variables are initialized (see step 4.1).
+```
+- `variables.tf`: We define the subscription_id variable here, which is used in `main.tf`.
+- `secrets.tf`: Contains a placeholder for your Azure subscription ID. As a best practice, this file should be excluded from version control (e.g., added to `.gitignore`) to protect sensitive information. In this example, I’ve included it for demonstration, but no actual Azure subscription information is provided.
+
+When running Terraform commands, we specify the `-var-file option`:
+```bash
+terraform plan -auto-approve -var-file="secrets.tfvars" 
+terraform apply -auto-approve -var-file="secrets.tfvars" 
+terraform destroy -auto-approve -var-file="secrets.tfvars"
+```
+
+Explanation:
+
+- `-var-file="secrets.tfvars"`: This tells Terraform to load variable values from the specified file. It's how you provide the actual subscription ID value to Terraform.
+- `-auto-approve`: This flag skips interactive approval of the plan. Use with caution, especially for `apply` and `destroy` operations.
 
 <br> <!-- Break between lines -->
 
@@ -41,7 +76,7 @@ This project contains a deployment of the following Azure resources using Terraf
 	- Reference: [Terraform Installation Guide](https://developer.hashicorp.com/terraform/install)
 	- You can also refer to this: [HCP Linux installation](https://developer.hashicorp.com/terraform/install)
 
-After you have installed all the prerequisites, create your project repository. You can decide where and how to organize your project folders.
+After you have installed all the prerequisites, create your project repository. You can decide where and how to organise your project folders.
 
 For example, you might create a folder structure like this: 
 `C:\deta-enjinia\terraform-projects`
@@ -101,6 +136,15 @@ ARM_CLIENT_ID=<appId value>
 ARM_CLIENT_SECRET=<password value>
 ARM_TENANT_ID=<tenant value>
 ARM_SERVICE_PRINCIPAL_NAME=tf-sp
+```
+### 4.1 Initialise the .env file
+```bash
+source .env
+```
+
+### 4.2 Test if these variables have been initialised successfully
+```bash
+echo $ARM_SERVICE_PRINCIPAL_NAME
 ```
 
 ### 5. Create Terraform files
