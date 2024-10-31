@@ -3,13 +3,16 @@ Creation Date: 2024-10-29
 Tags: #devops #dataengineering
 
 Related to: [[DevOps]]
-***
 ___
 --- 
 
 <br> <!-- Break between lines -->
 
 # About
+This project was inspired by curiosity and the recognition that, as a data engineer, it’s increasingly important to have foundational knowledge of DevOps practices like Terraform, often referred to as “Infrastructure as Code” (IaC). This approach is essential for modern, automated infrastructure management.
+
+Special thanks to Pedro ([Pytalista](https://youtu.be/8A0uZ0BoJ9k?si=1Bsm0MekZWnMOKh_)) for his insightful YouTube tutorial, which served as a valuable guide for developing this project.
+
 This project contains a deployment of the following Azure resources using Terraform:
 
 - **Service Principal (`tf-sp`)**: Based on HashiCorp's documentation, _"We recommend using either a Service Principal or Managed Service Identity when running Terraform non-interactively (such as when running Terraform in a CI server) - and authenticating using the Azure CLI when running Terraform locally."_ For more details, refer to this link: [Service Principal Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret).
