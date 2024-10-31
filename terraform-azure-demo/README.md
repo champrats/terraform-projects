@@ -4,25 +4,44 @@ Tags: #devops #dataengineering
 
 Related to: [[DevOps]]
 ________________________________
+
+# About
+This project contains a deployment of the following Azure resources using Terraform:
+
+- **Service Principal (`tf-sp`)**: Based on HashiCorp's documentation, _"We recommend using either a Service Principal or Managed Service Identity when running Terraform non-interactively (such as when running Terraform in a CI server) - and authenticating using the Azure CLI when running Terraform locally."_ For more details, refer to this link: [Service Principal Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret).
+    
+- **Resource Group (`terraform-rg`)**: A container that holds related resources (e.g., Azure Data Factory, Web Apps, Databricks, VMs) for an Azure solution.
+    
+- **Storage Account (`labaigoadlsauc1`)**: A unique namespace for your data storage that is accessible from anywhere, such as Azure Databricks.
+
 # Pre-requisites
-1. **WSL Ubuntu** ("Windows Subsystem for Linux") installed on your system.
-2. **Visual Studio Code** (VS Code) installed.
-3. **Azure CLI** installed on your WSL Ubuntu instance.
-4. **Terraform CLI** installed on your WSL Ubuntu instance.
-5. **Azure subscription**.
+1. **WSL Ubuntu** (Windows Subsystem for Linux) installed on your system.
+	- [Installation Tutorial](https://www.youtube.com/watch?v=HrAsmXy1-78)
+2. **Azure subscription**
+	- [Azure Free Account](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account?icid=azurefreeaccount)
+3. **Visual Studio Code** (VS Code) installed.
+	- [Download VS Code](https://code.visualstudio.com/download)
+4. **Azure CLI** installed on your WSL Ubuntu instance.
+	- **Option 1:** Install with one command (this is what I used): 
+		- `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`
+	- **Option 2:** Follow step-by-step instructions
+	- [Install Azure CLI on Linux](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt)
+	- Validate installation by running: `az version`.
+5. **Terraform CLI** installed on your WSL Ubuntu instance.
+	- Make sure to use your WSL Ubuntu terminal for this installation.
+	- Reference: [Terraform Installation Guide](https://developer.hashicorp.com/terraform/install)
+	- You can also refer to this: [HCP Linux installation](https://developer.hashicorp.com/terraform/install)
 
 After you have installed all the prerequisites, create your project repository. You can decide where and how to organize your project folders.
 
 For example, you might create a folder structure like this: 
-`C:\deta-enjinia\terraform-projects`
-
-# Reference
-< insert links / tutorials >
+`C:\deta-enjinia\terraform-projects
 
 # Simplified Steps
 In this section, you’ll find simplified steps to guide you from logging into Azure to creating a service principal and Azure storage account.
 
-### Key commands (in order):
+## Terraform Key commands (in order):
+
 ```bash
 terraform init
 ```
@@ -113,9 +132,11 @@ Using `-var-file="secrets.tfvars"` loads the `subscription_id` value without exp
 
 **Important**: Starting from version 4.0, specifying the subscription ID in the provider section is mandatory. Refer to this link: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide#specifying-subscription-id-is-now-mandatory
 
-### 9.1 Run `terraform apply` to build or modify your infrastructure deployment. You’ll be prompted to confirm the actions by typing `yes`
+### 9. Execute the actions proposed in a Terraform plan
 
-### 9.2 If you prefer to skip the confirmation prompt, you can use the following command:
+#### 9.1 Run `terraform apply` to build or modify your infrastructure deployment. You’ll be prompted to confirm the actions by typing `yes`
+
+#### 9.2 If you prefer to skip the confirmation prompt, you can use the following command:
 ```bash
 terraform apply -auto-approve -var-file="secrets.tfvars"
 ```
