@@ -3,8 +3,9 @@ Creation Date: 2024-10-29
 Tags: #devops #dataengineering
 
 Related to: [[DevOps]]
-________________________________
---------------------------------
+***
+___
+--- 
 
 <br> <!-- Break between lines -->
 
@@ -40,7 +41,7 @@ This project contains a deployment of the following Azure resources using Terraf
 After you have installed all the prerequisites, create your project repository. You can decide where and how to organize your project folders.
 
 For example, you might create a folder structure like this: 
-`C:\deta-enjinia\terraform-projects
+`C:\deta-enjinia\terraform-projects`
 
 <br> <!-- Break between lines -->
 
