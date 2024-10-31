@@ -34,3 +34,21 @@ resource "azurerm_storage_account" "storage_account" {
     environment = "lab"
   }
 }
+
+# Create Azure Databricks workspace - https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace
+resource "azurerm_databricks_workspace" "az-dbx-ws" {
+  name                        = "aigo-dbx-lab-auc1-01"
+  resource_group_name         = azurerm_resource_group.terraform-rg.name
+  location                    = azurerm_resource_group.terraform-rg.location
+  sku                         = "premium"
+  managed_resource_group_name = "aigo-dbx-lab-auc1-mrg"
+
+  tags = {
+    environment = "lab"
+  }
+}
+
+# To print Databricks host value after 'terraform apply'
+output "Databricks_host" {
+  value = "https:${azurerm_databricks_workspace.az-dbx-ws.workspace_url}"
+}

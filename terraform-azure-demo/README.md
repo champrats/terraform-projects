@@ -29,7 +29,10 @@ This project contains a deployment of the following Azure resources using Terraf
 
 ## Terraform Level
 ![alt text](images/terraform-level-diagram-1.png)
-- `.env`: Used to store environment-specific configuration details for your Azure service principal:
+- `main.tf`: Contains the infrastructure configurations.
+	- **Note:** In the Azure Databricks workspace block, I have included `managed_resource_group_name = "aigo-dbx-lab-auc1-mrg"`. This setting is optional; without it, Azure Databricks generates a managed resource group with a random name, such as `<resource-group>-<workspace-name>-<randome name i.e. abc1defgh2ijk>`. Specifying `managed_resource_group_name` allows for a cleaner and more consistent name for the managed resource group associated with the Databricks workspace (`aigo-dbx-lab-auc1-01`). This managed group will automatically provision resources like a managed identity, storage account, access connector for Azure Databricks, NSG, and virtual network.
+	- **Important:** Terraform executes your infrastructure configuration in a sequential order, so it's important to consider this when designing your setup.
+- `.env` (_not included in repo_): Used to store environment-specific configuration details for your Azure service principal:
 ```text
 ARM_SUBSCRIPTION_ID=<subscription id>
 ARM_CLIENT_ID=<appId value>
