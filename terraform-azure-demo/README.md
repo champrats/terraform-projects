@@ -135,6 +135,18 @@ az account set --subscription $DEFAULT_SUBSCRIPTION_ID
 az ad sp create-for-rbac --name tf-sp --role Contributor --scopes /subscriptions/$DEFAULT_SUBSCRIPTION_ID
 ```
 
+Once you have created the service principal, it will return some attributes as seen below. The values here will need to be entered in the `.env` file:
+```bash
+Creating 'Contributor' role assignment under scope '/subscriptions/<subscription id>'
+The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+{
+  "appId": "<appId value>",
+  "displayName": "tf-sp",
+  "password": "<password value>",
+  "tenant": "<tenant value>"
+}
+```
+
 ### 4. Create a file .env with the variables below
 ```bash
 ARM_SUBSCRIPTION_ID=<subscription id>
