@@ -10,6 +10,7 @@ terraform {
   }
 }
 
+# Starting from version 4.0, specifying the subscription ID in the provider section is mandatory. Refer to this link: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide#specifying-subscription-id-is-now-mandatory 
 provider "azurerm" {
   features {}
   subscription_id = var.subscription_id
