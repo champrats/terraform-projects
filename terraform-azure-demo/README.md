@@ -20,6 +20,8 @@ This project contains a deployment of the following Azure resources using Terraf
 - **Resource Group (`terraform-rg`)**: A container that holds related resources (e.g., Azure Data Factory, Web Apps, Databricks, VMs) for an Azure solution.
     
 - **Storage Account (`labaigoadlsauc1`)**: A unique namespace for your data storage that is accessible from anywhere, such as Azure Databricks.
+  
+- **Azure Databricks workspace (`aigo-dbx-lab-auc1-01`)**: A cloud data intelligence platform for developing and running big data and machine learning applications, leveraging Apache Spark for data processing, data engineering, and integrated tools for analytics and visualisation.
 
 <br> <!-- Break between lines -->
 
