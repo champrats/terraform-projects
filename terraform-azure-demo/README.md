@@ -46,7 +46,7 @@ ARM_SERVICE_PRINCIPAL_NAME=tf-sp
 
 When running Terraform commands, we specify the `-var-file option`:
 ```bash
-terraform plan -auto-approve -var-file="secrets.tfvars" 
+terraform plan -var-file="secrets.tfvars" 
 terraform apply -auto-approve -var-file="secrets.tfvars" 
 terraform destroy -auto-approve -var-file="secrets.tfvars"
 ```
@@ -97,7 +97,7 @@ terraform validate
 ```
 
 ```bash
-terraform plan -auto-approve -var-file="secrets.tfvars"
+terraform plan -var-file="secrets.tfvars"
 ```
 
 ```bash
@@ -180,7 +180,7 @@ terraform validate
 ```
 ### 8. Run `terraform plan` to validate your configuration file. This command checks for syntax errors and displays the resources that will be created.
 ```bash
-terraform plan -auto-approve -var-file="secrets.tfvars"
+terraform plan -var-file="secrets.tfvars"
 ```
 
 Using `-var-file="secrets.tfvars"` loads the `subscription_id` value without exposing it directly in your main configuration files.
