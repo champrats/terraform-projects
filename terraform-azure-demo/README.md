@@ -218,3 +218,9 @@ terraform apply -auto-approve -var-file="secrets.tfvars"
 ```bash
 terraform destroy -auto-approve -var-file="secrets.tfvars"
 ```
+
+# Caveats / Important Notes
+* **Enabling Serverless Compute**
+  * I was experimenting with enabling Serverless in Azure Databricks and discovered that its availability varies by region. Serverless compute may not be available in some regions—for example, it’s not supported in Australia Central where my current workspace is hosted. When I created a new Azure Databricks workspace in Australia East, I was able to enable serverless compute (this option needs to be activated in Accounts management).
+* I ran a test and noticed that some resources under `aigo-dbx-lab-auc1-mrg`, specified in `managed_resource_group_name`, were not deleted. This issue persists even if `managed_resource_group_name` is not specified. I’ve tested this with both the latest version (**4.7.0**) and an older version (**3.111.0**).
+	![MRG Not deleted](images/mrg-not-deleted.png)
